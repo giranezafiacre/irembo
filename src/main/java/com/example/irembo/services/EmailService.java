@@ -48,11 +48,11 @@ public class EmailService {
     }
 
     public boolean send2FASMSCode(String phoneNumber, String mfaCode) {
-        Twilio.init("AC5585cbf45345726b9748e11fbf60c987",
-                "93db4901d51c61f7476121e1895eb707");
+        Twilio.init("sid",
+                "password");
 
         com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber(phoneNumber),
-                new PhoneNumber("+12545955808"), "Your Code is " + mfaCode).create();
+                new PhoneNumber("phonenumber"), "Your Code is " + mfaCode).create();
         return true;
     }
 }
