@@ -5,11 +5,21 @@ project to enhance user account management features in ZPlatform to support rapi
 - Java version above 11
 - postgres
 - add irembo as database
+- create twillio account
 
 # Installation
 - Install Java
 - open editor(preferably IntelliJ)
+- add you sid, password and phone number assigned to you when creating twillio account in send2FASMSCode function at services/EmailService.java
 
+public boolean send2FASMSCode(String phoneNumber, String mfaCode) {\
+        Twilio.init("sid",
+                "password");\
+
+        com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber(phoneNumber),
+                new PhoneNumber("phonenumber"), "Your Code is " + mfaCode).create();\
+        return true;
+    }
 # Usage
 - login
 - logout
